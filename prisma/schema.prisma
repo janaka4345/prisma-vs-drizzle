@@ -9,6 +9,103 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Guest {
+  id         String    @id @default(uuid())
+  first_name String
+  last_name  String
+  email      String    @unique
+  phone_no   String?
+  Booking    Booking[]
+}
+
+model Payment_status {
+  id     String @id @default(uuid())
+  status String
+
+  Booking Booking[]
+}
+
+model Booking {
+  id               String         @id @default(uuid())
+  checkin_date     DateTime
+  checkout_date    DateTime
+  num_adults       Int
+  num_children     Int
+  booking_amount   Float
+  guest            Guest          @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  guestId          String
+  payment_status   Payment_status @relation(fields: [payment_statusId], references: [id], onDelete: Cascade)
+  payment_statusId String
+  room             Room[]
+  addon            Addon[]
+}
+
+model Room {
+  id           String      @id @default(uuid())
+  room_number  Int
+  booking      Booking[]
+  floor        Floor       @relation(fields: [floorId], references: [id])
+  floorId      String
+  room_class   Room_class  @relation(fields: [room_classId], references: [id])
+  room_classId String
+  status       Room_status @relation(fields: [statusId], references: [id])
+  statusId     String
+}
+
+// model Booking_room{
+
+// }
+model Addon {
+  id         String    @id @default(uuid())
+  addon_name String
+  Price      Float
+  booking    Booking[]
+}
+
+model Floor {
+  id           String @id @default(uuid())
+  floor_number Int
+  Room         Room[]
+}
+
+model Room_class {
+  id                  String                @id @default(uuid())
+  class_name          String
+  base_price          Float
+  Room                Room[]
+  room_class_bed_type room_class_bed_type[]
+  feature             Feature[]
+}
+
+model Room_status {
+  id     String @id @default(uuid())
+  status String
+  Room   Room[]
+}
+
+model Bed_type {
+  id                  String                @id @default(uuid())
+  bed_type            String
+  room_class_bed_type room_class_bed_type[]
+}
+
+model room_class_bed_type {
+  room_class   Room_class @relation(fields: [room_classId], references: [id])
+  room_classId String
+  bed_type     Bed_type   @relation(fields: [bed_typeId], references: [id])
+  bed_typeId   String
+  num_of_beds  Int
+
+  @@id([room_classId, bed_typeId])
+}
+
+model Feature {
+  id           String       @id @default(uuid())
+  feature_name String
+  room_class   Room_class[]
 }
