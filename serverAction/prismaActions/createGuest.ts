@@ -1,6 +1,6 @@
 'use server'
 import { faker } from '@faker-js/faker'
-import { prisma } from '../../utils/prismaClient'
+import prisma from '../../utils/prismaClient'
 
 export default async function createGuest() {
     try {
@@ -10,6 +10,13 @@ export default async function createGuest() {
                 last_name: faker.person.lastName(),
                 email: faker.internet.email(),
                 phone_no: faker.phone.number(),
+                // Booking:{
+                //     create:[
+                //         {
+                //          checkin_date:faker.date.anytime() ,
+                //         }
+                //     ]
+                // }
             },
         })
         return { message: 'success' }
