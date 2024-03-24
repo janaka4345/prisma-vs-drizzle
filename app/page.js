@@ -1,6 +1,7 @@
 'use client'
 import createUser from "@/serverAction/prismaActions/createUser";
 import server from "@/serverAction/server";
+import Link from "next/link";
 
 export default function Home() {
   async function handleClick() {
@@ -14,6 +15,7 @@ export default function Home() {
       hi
       <button onClick={() => server()}>click me</button>
       <button onClick={handleClick}>click me to create user</button>
+      <Link href='testall/test'>test faker</Link>
     </main>
   );
 }
