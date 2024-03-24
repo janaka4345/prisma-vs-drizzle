@@ -1,12 +1,12 @@
 'use client'
-import createUser from "@/serverAction/prismaActions/createUser";
+import createGuest from "@/serverAction/prismaActions/createGuest";
 import server from "@/serverAction/server";
 import Link from "next/link";
 
 export default function Home() {
   async function handleClick() {
-    const user = await createUser()
-    console.log(user);
+    const user = await createGuest()
+    console.log({ user });
 
   }
 
