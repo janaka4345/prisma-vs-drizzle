@@ -25,7 +25,7 @@ model Guest {
 
 model Payment_status {
   id     String @id @default(uuid())
-  status String
+  status String @unique
 
   Booking Booking[]
 }
@@ -87,14 +87,14 @@ model roomclass_feature {
 
 model Addon {
   id            String          @id @default(uuid())
-  addon_name    String
+  addon_name    String          @unique
   Price         Float
   booking_addon booking_addon[]
 }
 
 model Floor {
   id           String @id @default(uuid())
-  floor_number Int
+  floor_number Int    @unique
   Room         Room[]
 }
 
@@ -106,17 +106,19 @@ model Room_class {
   room_class_bed_type room_class_bed_type[]
 
   roomclass_feature roomclass_feature[]
+
+  @@unique([base_price, class_name])
 }
 
 model Room_status {
   id     String @id @default(uuid())
-  status String
+  status String @unique
   Room   Room[]
 }
 
 model Bed_type {
   id                  String                @id @default(uuid())
-  bed_type            String
+  bed_type            String                @unique
   room_class_bed_type room_class_bed_type[]
 }
 
@@ -132,6 +134,6 @@ model room_class_bed_type {
 
 model Feature {
   id                String              @id @default(uuid())
-  feature_name      String
+  feature_name      String              @unique
   roomclass_feature roomclass_feature[]
 }

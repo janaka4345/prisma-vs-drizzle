@@ -6,7 +6,7 @@ export default async function createBooking() {
     try {
         const data = await prisma.booking.create({
             data: {
-                guestId: 'e21ad614-8e08-4464-9556-249bcaeb9759',
+                guestId: '90453d28-57af-48c5-80e6-8f20f033db28',
                 num_adults: 10,
                 num_children: 0,
                 booking_amount: 140.25,

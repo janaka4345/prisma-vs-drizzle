@@ -8,19 +8,19 @@ export default async function createRoom() {
             room_number: 10,
             floor: {
                 connectOrCreate: {
-                    where: { floor_number: { equals: 10 } },
+                    where: { floor_number: 10 },
                     create: { floor_number: 10 },
                 },
             },
             status: {
                 connectOrCreate: {
-                    where: { id: '10' },
+                    where: { status: 'pending' },
                     create: { status: 'pending' },
                 },
             },
             room_class: {
                 connectOrCreate: {
-                    where: { id: '10' },
+                    where: { base_price: 100.25 },
                     create: { base_price: 100.25, class_name: 'luxary' },
                 },
             },
