@@ -39,8 +39,8 @@ model Booking {
   booking_amount   Float
   guest            Guest           @relation(fields: [guestId], references: [id], onDelete: Cascade)
   guestId          String
-  payment_status   Payment_status  @relation(fields: [payment_statusId], references: [id], onDelete: Cascade)
-  payment_statusId String
+  payment_status   Payment_status? @relation(fields: [payment_statusId], references: [id], onDelete: Cascade)
+  payment_statusId String?
   booking_addon    booking_addon[]
   booking_room     booking_room[]
 }
@@ -66,8 +66,7 @@ model booking_addon {
 
 model Room {
   id           String         @id @default(uuid())
-  room_number  Int
-  // booking      Booking[]
+  room_number  Int            @unique
   floor        Floor          @relation(fields: [floorId], references: [id])
   floorId      String
   room_class   Room_class     @relation(fields: [room_classId], references: [id])
