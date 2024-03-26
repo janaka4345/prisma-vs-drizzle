@@ -1,8 +1,8 @@
 'use client'
-import createBooking from "@/serverAction/prismaActions/createBooking";
-import createGuest from "@/serverAction/prismaActions/createGuest";
-import createRoom from "@/serverAction/prismaActions/createRoom";
-import server from "@/serverAction/server";
+import createBooking from "../serverAction/prismaActions/createBooking"
+import createGuest from "../serverAction/prismaActions/createGuest";
+import createRoom from "../serverAction/prismaActions/createRoom";
+import server from "../serverAction/server";
 import Link from "next/link";
 
 export default function Home() {
