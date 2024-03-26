@@ -20,7 +20,7 @@ export default async function createRoom() {
             },
             room_class: {
                 connectOrCreate: {
-                    where: { base_price: 100.25 },
+                    where: { id: '12' },
                     create: { base_price: 100.25, class_name: 'luxary' },
                 },
             },
