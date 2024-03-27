@@ -1,5 +1,4 @@
 import * as z from "zod"
-import * as imports from "../null"
 import { CompleteRoom, RelatedRoomModel, CompleteBooking, RelatedBookingModel } from "./index"
 
 export const booking_roomModel = z.object({
