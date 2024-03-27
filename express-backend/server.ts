@@ -12,9 +12,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     next()
 })
 
-
-
-
 //routes
 app.use('/api/guests', guestRoutes)
 
@@ -23,7 +20,7 @@ app.use('/api/guests', guestRoutes)
 
 app.listen(process.env.PORT, () => {
 
-    console.log('listening on port', process.env.PORT);
+    console.log('listening on port:', process.env.PORT);
 
 })
 
