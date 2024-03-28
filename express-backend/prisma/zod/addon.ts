@@ -2,7 +2,7 @@ import * as z from "zod"
 import { Completebooking_addon, Relatedbooking_addonModel } from "./index"
 
 export const AddonModel = z.object({
-  id: z.string(),
+  
   addon_name: z.string(),
   Price: z.number(),
 })

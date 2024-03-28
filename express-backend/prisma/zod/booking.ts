@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteGuest, RelatedGuestModel, CompletePayment_status, RelatedPayment_statusModel, Completebooking_addon, Relatedbooking_addonModel, Completebooking_room, Relatedbooking_roomModel } from "./index"
 
 export const BookingModel = z.object({
-  id: z.string(),
+  
   checkin_date: z.date(),
   checkout_date: z.date(),
   num_adults: z.number().int(),

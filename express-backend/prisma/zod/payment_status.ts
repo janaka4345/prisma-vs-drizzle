@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteBooking, RelatedBookingModel } from "./index"
 
 export const Payment_statusModel = z.object({
-  id: z.string(),
+  
   status: z.string(),
 })
 

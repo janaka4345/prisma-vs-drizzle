@@ -2,7 +2,7 @@ import * as z from "zod"
 import { Completeroomclass_feature, Relatedroomclass_featureModel } from "./index"
 
 export const FeatureModel = z.object({
-  id: z.string(),
+  
   feature_name: z.string(),
 })
 

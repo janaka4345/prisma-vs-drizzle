@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteRoom, RelatedRoomModel } from "./index"
 
 export const Room_statusModel = z.object({
-  id: z.string(),
+  
   status: z.string(),
 })
 

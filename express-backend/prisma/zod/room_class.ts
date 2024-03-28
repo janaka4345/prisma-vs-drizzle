@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteRoom, RelatedRoomModel, Completeroom_class_bed_type, Relatedroom_class_bed_typeModel, Completeroomclass_feature, Relatedroomclass_featureModel } from "./index"
 
 export const Room_classModel = z.object({
-  id: z.string(),
+  
   class_name: z.string(),
   base_price: z.number(),
 })
