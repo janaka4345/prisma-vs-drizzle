@@ -19,12 +19,15 @@ export const getAllGuests=async (req: Request, res: Response) => {
 export const getGuestById=async (req: Request, res: Response) => {
     
     try {
-
         const guest = await prisma.guest.findUnique({
             where: {
                 id: req.params.id
             }
         })
+        if(!guest){
+            return res.json({ error: 'no such guest by that id found' })
+         
+        }
         res.json({ message: 'guest by id', guest })
     } catch (error) {
         res.json({ error })
@@ -40,7 +43,10 @@ export const getGuestByEmail=async (req: Request, res: Response) => {
                 email: req.params.email
             }
         })
-
+        if(!guest){
+            return res.json({ error: 'no such guest by that email found' })
+         
+        }
         res.json({ message: 'guest by email', guest })
     } catch (error) {
         res.json({ error })
@@ -53,8 +59,8 @@ export const createGuest=async (req: Request, res: Response) => {
     const body = req.body
     const parsedData = GuestModel.safeParse(body)
     if (!parsedData.success) {
-        res.status(400).json({ error: 'invalid data entered' })
-        return
+        return res.status(400).json({ error: 'invalid data entered' })
+        
     }
     try {
         const guest = await prisma.guest.create({
@@ -87,8 +93,8 @@ export const updateGuest=async (req: Request, res: Response) => {
     const body = req.body
     const parsedData = GuestModel.safeParse(body)
     if (!parsedData.success) {
-        res.status(400).json({ error: 'invalid data entered' })
-        return
+        return res.status(400).json({ error: 'invalid data entered' })
+        
     }
     try {
         const guest = await prisma.guest.update({
