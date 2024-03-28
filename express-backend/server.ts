@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express')
-const guestRoutes = require('./routes/guests')
+const guestRoutes = require('./routes/guestRoutes')
 import { Request, Response, NextFunction } from 'express';
 
 //express app init

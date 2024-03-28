@@ -2,6 +2,7 @@ const express = require('express')
 
 import { Request, Response, } from 'express';
 import { PrismaClient } from '@prisma/client'
+import { GuestModel } from '../prisma/zod';
 
 const prisma = new PrismaClient()
 console.log('prisma client 1 created');
@@ -57,6 +58,9 @@ router.get('/email/:email', async(req:Request, res:Response) => {
 router.post('/', (req:Request, res:Response) => {
     const body=req.body
     console.log(body);
+   const validation= GuestModel.safeParse(body)
+   console.log(validation);
+
     
     res.json({ message: 'post /crete guest ' })
 
