@@ -1,5 +1,6 @@
-import * as z from 'zod'
+import * as z from "zod"
 
 export const FloorModel = z.object({
-    floor_number: z.number().int(),
+  id: z.string(),
+  floor_number: z.number().int(),
 })

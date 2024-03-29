@@ -8,6 +8,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator trpc {
+  provider        = "prisma-trpc-generator"
+  withZod         = true
+  withMiddleware  = false
+  withShield      = false
+  contextPath     = "../src/context"
+  trpcOptionsPath = "../src/trpcOptions"
+}
+
 generator zod {
   provider = "zod-prisma"
   output   = "./zod" // (default) the directory where generated zod schemas will be saved
