@@ -27,10 +27,16 @@ export const guestControllerRouter = router({
         .input(GuestModel)
         // .output(GuestModel)
         .mutation(async (opts) => {
-            // const { input } = opts
-            console.log(opts)
-
-            // const guest = await prisma.guest.create(input)
-            return { message: 'mutation ran' }
+            const { input } = opts
+            console.log(input)
+            const guest = await prisma.guest.create({
+                data: {
+                    first_name: input.first_name,
+                    last_name: input.last_name,
+                    email: input.email,
+                    phone_no: input.phone_no,
+                },
+            })
+            return guest
         }),
 })
