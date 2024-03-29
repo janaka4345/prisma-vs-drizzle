@@ -1,13 +1,13 @@
-import { httpBatchLink } from "@trpc/client";
-import { t } from "../trpcSever/trpc";
-import { appRouter } from "../trpcSever";
+import { httpBatchLink } from '@trpc/client'
 
+import { appRouter } from '../trpcSever'
+import { createCaller } from '../trpcSever/trpc'
 
-const createCaller =t.createCallerFactory(appRouter)
-export const serverClient=createCaller({
+const caller = createCaller(appRouter)
+export const serverClient = caller({
     links: [
         httpBatchLink({
-          url: "http://localhost:3000/api/trpc",
+            url: 'http://localhost:3000/api/trpc',
         }),
-      ],
+    ],
 })
